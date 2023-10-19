@@ -1,9 +1,10 @@
 [package]
-name = "s2-helper"
-version = "0.0.1"
+name = "s2-helper-wasm"
+version = "0.0.2"
 edition = "2021"
 description = "s2 helper lite version using wasm"
 license = "MIT"
+keywords = ["s2 helper", "wasm"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -14,3 +15,5 @@ crate-type = ["cdylib"]
 s2 = "0.0.10"
 wasm-bindgen = "0.2.87"
 
+[profile.release]
+lto = true
