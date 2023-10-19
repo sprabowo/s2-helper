@@ -1,3 +1,3 @@
-# S2 Helper WASM
+# S2 helper wasm
 
 simple s2 helper run on browser through wasm to do such s2 cell id calculation given latitude, longitude, level and reverse s2 cell id to coordinates
