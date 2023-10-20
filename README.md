@@ -14,20 +14,24 @@ npm install s2-helper-wasm
 import init, { calculate } from 's2-helper-wasm'
 
 init().then(() => {
-  const cellID = calculate(-6.228968465405475, 106.8071658857885, 13) // "3344469575738589184"
+  const cellID = calculate(-6.228968465405475, 106.8071658857885, 13) 
+  console.log(cellID) // "3344469575738589184"
 })
 ```
 
 ## Non modules
 
 ### Build
-```
+```sh
 wasm-pack build --target no-modules
-# copy pkg/s2_helper_wasm.js, pkg/s2_helper_wasm_bg.wasm to /public
+# copy pkg/s2_helper_wasm.js, pkg/s2_helper_wasm_bg.wasm to public folder
 cp pkg/s2_helper_wasm.js public
 cp pkg/s2_helper_wasm_bg.wasm public
+```
 
-# in your index.html
+### Usage 
+```html
+<!-- index.html -->
 <script src="/s2_helper_wasm.js"></script>
 <script>
   const { calculate } = wasm_bindgen
@@ -35,6 +39,7 @@ cp pkg/s2_helper_wasm_bg.wasm public
   async function init() {
     await wasm_bindgen()
     const cellID = calculate(-6.228968465405475, 106.8071658857885, 13)
+    console.log(cellID) // "3344469575738589184"
   }
 
   init()
