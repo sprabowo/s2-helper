@@ -24,11 +24,10 @@ pub fn get_coordinates(cellid: &str) -> String {
                 return "".to_string()
             }
             let points = Cell::from(ci).vertices();
-            let coordinates: Vec<String> = points.iter().map(|p| format!("{},{}", p.longitude().deg(), p.latitude().deg())).collect();
+            let coordinates: Vec<String> = points.iter().map(|p| format!("{},{}", p.latitude().deg(), p.longitude().deg())).collect();
             coordinates.join(";")
         }
         Err(_e) => {
-            // Failed to parse the string as u64
             return "".to_string()
         }
     }
@@ -45,7 +44,7 @@ mod tests {
 
     #[test]
     fn it_success_get_coordinates() {
-        assert_eq!("106.80603880529831,-6.238318259447594;106.81783770824106,-6.237933179178703;106.81783770824107,-6.227712965171154;106.80603880529831,-6.228097424504746", get_coordinates("3344469575738589184"));
+        assert_eq!("-6.238318259447594,106.80603880529831;-6.237933179178703,106.81783770824106;-6.227712965171154,106.81783770824107;-6.228097424504746,106.80603880529831", get_coordinates("3344469575738589184"));
     }
 
     #[test]
