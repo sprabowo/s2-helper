@@ -23,5 +23,20 @@ init().then(() => {
 ### Build
 ```
 wasm-pack build --target no-modules
-# copy pkg/s2_helper.js to /public 
+# copy pkg/s2_helper_wasm.js, pkg/s2_helper_wasm_bg.wasm to /public
+cp pkg/s2_helper_wasm.js public
+cp pkg/s2_helper_wasm_bg.wasm public
+
+# in your index.html
+<script src="/s2_helper_wasm.js"></script>
+<script>
+  const { calculate } = wasm_bindgen
+
+  async function init() {
+    await wasm_bindgen()
+    const cellID = calculate(-6.228968465405475, 106.8071658857885, 13)
+  }
+
+  init()
+</script>
 ```
